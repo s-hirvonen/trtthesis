@@ -110,25 +110,8 @@ sekä \verb+*.pdf+. Kuvassa~\ref{fig:esimKuva} on
 PDF-formaatissa tuotu Matlabilla tehty
 esimerkkikuva.
 
-% lähdeluettelo
-\newpage
-\addcontentsline{toc}{chapter}{Lähteet} % Lisää tämäkin sisällysluetteloon
-\renewcommand{\bibname}{Lähteet}
-\begin{thebibliography}{99}
-\bibitem{Hirs} Hirsjärvi, S., Remes, P., ja Sajavaara, P. 2005. Tutki ja
-  kirjoita, 11. painos. Helsinki, Tammi. 436 s.
-\bibitem{Mittelbach} Mittelbach, F., Goossens, M., Braams, J.,
-Carlisle, D., Rowley, C. 2004. The Latex Companion, 2. painos. Boston, Addison-Wesley. 1120 s.
+\include{./partials/references}
+\include{./partials/appendix}
 
-\end{thebibliography}
-
-% seuraavia voi käyttää bibtex:n kanssa (edellyttää tiedoston kirjat.bib)
-%\bibliographystyle{plain}
-%\bibliography{kirjat}
-
-\appendix
-\renewcommand{\chaptername}{Liite}
-
-\chapter{Liitteitä}
 \end{document}
 
