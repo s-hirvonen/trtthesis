@@ -1,224 +1,49 @@
 \documentclass[12pt,a4paper,finnish]{vendor/tutthesis}
+\graphicspath{ {./vendor/images/} {./images} }
 
 % LaTeX-tiedosto opinnäytepohjaksi
 % Tekijä: Sami Paavilainen
 % Muokkaaja: Heikki Huttunen (heikki.huttunen@tut.fi) 31.7.2012.
 
-% Vaatii lisäksi luokkatiedoston tutthesis.cls
-% sekä tiedoston tty-logo.pdf (pdflatex) tai tty-logo-eps (latex)
-
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
 \usepackage[small]{caption}% kuvatekstien kirjasinkoko ja asettelu
-%omia käskyjä voi lisätä tähän väliin, esim. \newcommand{\angs}{\textsl{\AA}}
 \pagenumbering{Roman}
-\graphicspath{ {./vendor/images/} {./images} }
 % alkuvalmistelut loppuu
 
 \begin{document}
 
-
-\thispagestyle{empty}
-
-\vspace*{-.5cm}\noindent
-
-% If thesis is in English, use the file "tut-logo"
-% instead of "tty-logo" in the following:
-
-\includegraphics[width=8cm]{tty-logo}
-
-\vspace{6.8cm}
-
-\noindent{\bf\large \textsf{TEKIJÄN NIMI}}\\
-{\bf\large \textsf{OPINNÄYTETYÖN OTSIKKO}}\\
-\textsf{Diplomityö}
-
-\vspace{8.7cm} % jos kaksi otsikkoriviä vaihda -> 6.7cm
-
-\begin{flushright}
-
-\begin{minipage}[c]{6.8cm}
-\begin{spacing}{1.0}
-\textsf{Tarkastaja: Tarkastaja 1}\\
-\textsf{Tarkastaja ja aihe hyväksytty}\\
-\textsf{xxxxxxx tiedekuntaneuvoston}\\
-\textsf{kokouksessa xx.xx.xxxx}\\
-\end{spacing}
-\end{minipage}
-\end{flushright}
-
-\newpage
-
-\setcounter{page}{1} % tämä tarvitaan, jottei ensimmäinen sivu kansilehden jälkeen olisi numero 2.
-
-\chapter*{TIIVISTELMÄ}
-\begin{spacing}{1.0}
-\textsf{TAMPEREEN TEKNILLINEN YLIOPISTO}\\
-\textsf{xxxxxxxxxxxxx koulutusohjelma}\\
-{\bf \textsf{TEKIJÄN NIMI: Otsikko}}\\
-\textsf{Diplomityö, xx sivua, x liitesivua}\\
-\textsf{Xxxxxkuu 201x}\\
-\textsf{Pääaine: }\\
-\textsf{Tarkastajat: }\\
-\textsf{Avainsanat: }\\
-\end{spacing}
-
-\noindent
-Ensimmäinen kappale
-
-\noindent
-Toinen kappale
-\newpage
-\chapter*{ABSTRACT}
-\begin{spacing}{1.0}
-\textsf{TAMPERE UNIVERSITY OF TECHNOLOGY}\\
-\textsf{Master's Degree Programme in xxxxxxx Technology}\\
-{\bf \textsf{AUTHOR : Title}}\\
-\textsf{Master of Science Thesis, xx pages, x Appendix pages}\\
-\textsf{xxxxxx 201x}\\
-\textsf{Major: }\\
-\textsf{Examiner: }\\
-\textsf{Keywords: }\\
-\end{spacing}
-
-\noindent
-First paragraph
-
-\noindent
-Second paragraph
-
-\newpage
-
-\chapter*{ALKUSANAT}
-\noindent Tämä (\textit{d-tyo.tex}) on \LaTeX-pohja Tampereen teknillisen
-yliopiston opinnäytetöitä varten. Samaan pakettiin kuuluu myös
-tiedosto \mbox{\textit{tutthesis.cls}}, joka sisältää taittoteknisiä
-lisäyksiä \LaTeX:n alkuperäiseen \textit{report.cls}-luokkatiedostoon.
-
-Lisäksi otsikkosivua varten tarvitaan tiedosto \textit{tty-logo.xxx}, jonka
-tulee sisältää TTY:n logo. Tiedoston tulee
-olla joko \textit{.eps}- tai \textit{.pdf}-muodossa riippuen \LaTeX-versiosta.
-
-\newpage
-\renewcommand\contentsname{Sisällys} % poista jos kieli muu kuin suomi
+% ------------
+% The document head consists of the cover page, abstracts in both
+% Finnish and English, preface and the table of contents.
+% Comment these lines out as needed
+% ------------
+\include{./partials/cover-page}
+\include{./partials/abstract-finnish}
+\include{./partials/abstract-english}
+\include{./partials/preface-finnish}
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 \tableofcontents
-%\newpage
 %\listoffigures
 %\listoftables
-\newpage
-\chapter*{TERMIT JA NIIDEN MÄÄRITELMÄT}
+\include{./partials/terms-and-definitions-finnish}
 
-
-\begin{termiluettelo}
-
-\item [$\hbar$] Redusoitu Planckin vakio
-\item [SNR] Signaali-kohinasuhde (engl.: Signal to Noise Ratio)
-
-\end{termiluettelo}
-
-
-\newpage
+% Content start
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{}{}}
 \lhead{\fancyplain{}{\leftmark}}
-
-% Tästä alkaa varsinainen teksti
 \pagenumbering{arabic}
 
-\chapter{Johdanto}
+% ------------
+% Add your chapters here
+% ------------
+\include{./chapters/johdanto}
+\include{./chapters/opinnaytetyon-rakenne}
 
-Tampereen teknillisen yliopiston perustutkintojen opinnäytetöitä ovat
-kandidaatintyö ja diplomityö. Lisäksi tehdään kirjallisia
-harjoitustöitä, joissa tätä ohjetta voidaan käyttää soveltuvin osin.
 
-Tämä pohja on tarkoitettu auttamaan työn kirjoittamista \LaTeX:n
-kanssa. Oppaita itse \LaTeX:n käyttöön löytyy kattavasti verkosta,
-esimerkiksi Wikipediasta. Myös seuraava opas on hyvä lähtökohta
-aloittelijoille:
-\begin{quote}
-http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf
-\end{quote}
+% ------------
+% References and appendix, comment out as needed
+% ------------
+\include{./partials/references}
+\include{./partials/appendix}
 
-\chapter{Opinnäytetyön rakenne}
-
-Tässä esimerkkejä luvuista ja aliluvuista.
-
-\section{Lähdeluettelo}
-
-Lähdeluettelo voi \LaTeX:ssa tehdä joko tietokantamuotoisesti
-\textit{bibtex}-käskyn avulla tai vaihtoehtoisesti tässä esitetyllä tyylillä.
-Lisätietoa löytyy esim. Wikipediasta ''\textit{bibtex}''-hakusanalla.
-
-Tältä näyttää viittaus perinteisellä numeromerkinnällä \cite{Hirs,Mittelbach}.
-
-% Huom.: oikeaoppinen tapa viitata olisi seuraava:
-%
-% ...numeromerkinnällä~\cite{Hirs}.
-%
-% Merkintä "~" toimii kuten välilyönti, mutta estää rivinvaihdon
-% ja seuraavan rivin alkamisen rumasti viittauksella.
-
-\subsection{Aliesimerkki}
-
-Turhaa tekstiä esimerkin vuoksi.
-
-\section{Matemaattisista merkinnöistä}
-
-\LaTeX:lla yhtälöiden kirjoittaminen on helppoa. Seuraavassa ensin esimerkki
-\begin{equation}
-  \label{eq:fourier}
-  G^+(t,t')= \int G^+(E) exp[-iE(t-t')/\hbar] dE,
-\end{equation}
-jonka jälkeen kappale jatkuu näin.
-Tekstissä kaavat $G^+(t,t')= \int G^+(E) exp[-iE(t-t')/\hbar] dE$ näyttävät
-tällaisilta. Kaavoihin (ks. \ref{eq:fourier}) on myös helppo viitata.
-
-% Esimerkkikuva.
-% Huomaa, että useimmat ohjelmat latovat PDF-kuvan
-% A4-sivulle, jolloin kuvassa on mukana paljon tyhjää.
-% Tämän voi poistaa PDF-editoreilla. Esim.
-% PDF-X-Change-ohjelmistossa on toiminto "remove white spaces".
-%
-% Huomaa myös, että Latex sijoittaa kuvan aikaisintaan
-% tähän kohtaan tekstissä. Yleensä kuvat kannattaa
-% ladata n. sivun verran aikaisemmin kun niihin viitataan.
-% Muuten seuraava sopiva paikka saattaa tulla vasta
-% parin sivun päähän viittauksesta.
-
-\begin{figure}[t]
-\begin{center}
-\end{center}
-\caption{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
-\label{fig:esimKuva}
-\end{figure}
-
-\section{Kuvat}
-
-Latexiin voi tuoda kuvia useassa eri formaatissa.
-Näppärintä on käyttää pdflatex-kääntäjää, jolloin
-sallitut formaatit ovat \verb+*.png+, \verb+*.jpg+
-sekä \verb+*.pdf+. Kuvassa~\ref{fig:esimKuva} on
-PDF-formaatissa tuotu Matlabilla tehty
-esimerkkikuva.
-
-% lähdeluettelo
-\newpage
-\addcontentsline{toc}{chapter}{Lähteet} % Lisää tämäkin sisällysluetteloon
-\renewcommand{\bibname}{Lähteet}
-\begin{thebibliography}{99}
-\bibitem{Hirs} Hirsjärvi, S., Remes, P., ja Sajavaara, P. 2005. Tutki ja
-  kirjoita, 11. painos. Helsinki, Tammi. 436 s.
-\bibitem{Mittelbach} Mittelbach, F., Goossens, M., Braams, J.,
-Carlisle, D., Rowley, C. 2004. The Latex Companion, 2. painos. Boston, Addison-Wesley. 1120 s.
-
-\end{thebibliography}
-
-% seuraavia voi käyttää bibtex:n kanssa (edellyttää tiedoston kirjat.bib)
-%\bibliographystyle{plain}
-%\bibliography{kirjat}
-
-\appendix
-\renewcommand{\chaptername}{Liite}
-
-\chapter{Liitteitä}
 \end{document}
-
