@@ -1,4 +1,5 @@
 \documentclass[12pt,a4paper,finnish]{vendor/tutthesis}
+\graphicspath{ {./vendor/images/} {./images} }
 
 % LaTeX-tiedosto opinnäytepohjaksi
 % Tekijä: Sami Paavilainen
@@ -11,112 +12,21 @@
 \usepackage[small]{caption}% kuvatekstien kirjasinkoko ja asettelu
 %omia käskyjä voi lisätä tähän väliin, esim. \newcommand{\angs}{\textsl{\AA}}
 \pagenumbering{Roman}
-\graphicspath{ {./vendor/images/} {./images} }
 % alkuvalmistelut loppuu
 
 \begin{document}
 
-
-\thispagestyle{empty}
-
-\vspace*{-.5cm}\noindent
-
-% If thesis is in English, use the file "tut-logo"
-% instead of "tty-logo" in the following:
-
-\includegraphics[width=8cm]{tty-logo}
-
-\vspace{6.8cm}
-
-\noindent{\bf\large \textsf{TEKIJÄN NIMI}}\\
-{\bf\large \textsf{OPINNÄYTETYÖN OTSIKKO}}\\
-\textsf{Diplomityö}
-
-\vspace{8.7cm} % jos kaksi otsikkoriviä vaihda -> 6.7cm
-
-\begin{flushright}
-
-\begin{minipage}[c]{6.8cm}
-\begin{spacing}{1.0}
-\textsf{Tarkastaja: Tarkastaja 1}\\
-\textsf{Tarkastaja ja aihe hyväksytty}\\
-\textsf{xxxxxxx tiedekuntaneuvoston}\\
-\textsf{kokouksessa xx.xx.xxxx}\\
-\end{spacing}
-\end{minipage}
-\end{flushright}
-
-\newpage
-
-\setcounter{page}{1} % tämä tarvitaan, jottei ensimmäinen sivu kansilehden jälkeen olisi numero 2.
-
-\chapter*{TIIVISTELMÄ}
-\begin{spacing}{1.0}
-\textsf{TAMPEREEN TEKNILLINEN YLIOPISTO}\\
-\textsf{xxxxxxxxxxxxx koulutusohjelma}\\
-{\bf \textsf{TEKIJÄN NIMI: Otsikko}}\\
-\textsf{Diplomityö, xx sivua, x liitesivua}\\
-\textsf{Xxxxxkuu 201x}\\
-\textsf{Pääaine: }\\
-\textsf{Tarkastajat: }\\
-\textsf{Avainsanat: }\\
-\end{spacing}
-
-\noindent
-Ensimmäinen kappale
-
-\noindent
-Toinen kappale
-\newpage
-\chapter*{ABSTRACT}
-\begin{spacing}{1.0}
-\textsf{TAMPERE UNIVERSITY OF TECHNOLOGY}\\
-\textsf{Master's Degree Programme in xxxxxxx Technology}\\
-{\bf \textsf{AUTHOR : Title}}\\
-\textsf{Master of Science Thesis, xx pages, x Appendix pages}\\
-\textsf{xxxxxx 201x}\\
-\textsf{Major: }\\
-\textsf{Examiner: }\\
-\textsf{Keywords: }\\
-\end{spacing}
-
-\noindent
-First paragraph
-
-\noindent
-Second paragraph
-
-\newpage
-
-\chapter*{ALKUSANAT}
-\noindent Tämä (\textit{d-tyo.tex}) on \LaTeX-pohja Tampereen teknillisen
-yliopiston opinnäytetöitä varten. Samaan pakettiin kuuluu myös
-tiedosto \mbox{\textit{tutthesis.cls}}, joka sisältää taittoteknisiä
-lisäyksiä \LaTeX:n alkuperäiseen \textit{report.cls}-luokkatiedostoon.
-
-Lisäksi otsikkosivua varten tarvitaan tiedosto \textit{tty-logo.xxx}, jonka
-tulee sisältää TTY:n logo. Tiedoston tulee
-olla joko \textit{.eps}- tai \textit{.pdf}-muodossa riippuen \LaTeX-versiosta.
-
-\newpage
-\renewcommand\contentsname{Sisällys} % poista jos kieli muu kuin suomi
+% Comment these lines out as needed
+\include{./partials/cover-page}
+\include{./partials/abstract-finnish}
+\include{./partials/abstract-english}
+\include{./partials/preface-finnish}
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 \tableofcontents
-%\newpage
 %\listoffigures
 %\listoftables
-\newpage
-\chapter*{TERMIT JA NIIDEN MÄÄRITELMÄT}
+\include{./partials/terms-and-definitions-finnish}
 
-
-\begin{termiluettelo}
-
-\item [$\hbar$] Redusoitu Planckin vakio
-\item [SNR] Signaali-kohinasuhde (engl.: Signal to Noise Ratio)
-
-\end{termiluettelo}
-
-
-\newpage
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{}{}}
 \lhead{\fancyplain{}{\leftmark}}
