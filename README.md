@@ -1,0 +1,1 @@
+# Tuotantotalouden osaston opinnäytetyöpohja: LaTEX-pohja
