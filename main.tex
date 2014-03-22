@@ -11,9 +11,11 @@
 \usepackage[small]{caption}% kuvatekstien kirjasinkoko ja asettelu
 %omia käskyjä voi lisätä tähän väliin, esim. \newcommand{\angs}{\textsl{\AA}}
 \pagenumbering{Roman}
+\graphicspath{ {./vendor/images/} {./images} }
 % alkuvalmistelut loppuu
 
 \begin{document}
+
 
 \thispagestyle{empty}
 
@@ -22,7 +24,7 @@
 % If thesis is in English, use the file "tut-logo"
 % instead of "tty-logo" in the following:
 
-\includegraphics[width=8cm]{vendor/tty-logo}
+\includegraphics[width=8cm]{tty-logo}
 
 \vspace{6.8cm}
 
@@ -184,7 +186,6 @@ tällaisilta. Kaavoihin (ks. \ref{eq:fourier}) on myös helppo viitata.
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{esimKuva.pdf}
 \end{center}
 \caption{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
 \label{fig:esimKuva}
