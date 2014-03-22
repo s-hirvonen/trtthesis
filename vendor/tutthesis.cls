@@ -3,7 +3,7 @@
 %% This contains add-ons for report.cls file of the LaTeX base system.
 %% Author: Sami Paavilainen (16 October 2006)
 %% --------------------------------------------------------------
-%% 
+%%
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
@@ -11,7 +11,7 @@
 %%    http://www.latex-project.org/lppl.txt
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2003/12/01 or later.
-%% 
+%%
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{tutthesis}
@@ -103,7 +103,7 @@
                  \fi}
 \def\@makeschapterhead#1{%
   \vspace*{-22pt}%
-  {\parindent \z@ \raggedright 
+  {\parindent \z@ \raggedright
     \bf\Large \textsf{\MakeUppercase{#1}}\par              % chapter title
     \vspace{12pt}%                                 % add vertical space
 }}
@@ -127,7 +127,7 @@
                                        {3.25ex \@plus1ex \@minus .2ex}%
                                        {-1em}%
                                       {\normalfont\normalsize\bfseries}}
-                                      
+
 % Määritellään puolipiste viitteiden erottimeksi [1; 2] pilkun sijaan [1, 2].
 
 \def\@citex[#1]#2{%
@@ -170,7 +170,7 @@
 \setlength\oddsidemargin{1.5cm} % sisemmät marginaalit parittomille sivuille
 \setlength\evensidemargin{1.5cm} % sisemmät marginaalit parillisille sivuille
 \setlength\topmargin{0.0cm} % sisemmät marginaalit
-\setlength\brokenpenalty{1000} 
+\setlength\brokenpenalty{1000}
 \renewcommand{\baselinestretch}{1.2}
 
 \newlength\chapterspace
@@ -189,8 +189,8 @@
      {\ifnum \c@chapter>\z@ \chapfigname.\fi \@arabic\c@table}
 
 
-\RequirePackage[T1]{fontenc} 
-\RequirePackage[latin1]{inputenc}% skandinaaviset kirjasimet
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}% skandinaaviset kirjasimet
 \RequirePackage{graphicx}% grafiikkapaketti
 \RequirePackage{psfrag}% mahdollistaa ps-tiedostojen muokkauksen jälkikäteen
 \RequirePackage{subfigure}% mahdollistaa pikkukuvat..
