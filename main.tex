@@ -5,18 +5,18 @@
 % Tekijä: Sami Paavilainen
 % Muokkaaja: Heikki Huttunen (heikki.huttunen@tut.fi) 31.7.2012.
 
-% Vaatii lisäksi luokkatiedoston tutthesis.cls
-% sekä tiedoston tty-logo.pdf (pdflatex) tai tty-logo-eps (latex)
-
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
 \usepackage[small]{caption}% kuvatekstien kirjasinkoko ja asettelu
-%omia käskyjä voi lisätä tähän väliin, esim. \newcommand{\angs}{\textsl{\AA}}
 \pagenumbering{Roman}
 % alkuvalmistelut loppuu
 
 \begin{document}
 
+% ------------
+% The document head consists of the cover page, abstracts in both
+% Finnish and English, preface and the table of contents.
 % Comment these lines out as needed
+% ------------
 \include{./partials/cover-page}
 \include{./partials/abstract-finnish}
 \include{./partials/abstract-english}
@@ -27,91 +27,23 @@
 %\listoftables
 \include{./partials/terms-and-definitions-finnish}
 
+% Content start
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{}{}}
 \lhead{\fancyplain{}{\leftmark}}
-
-% Tästä alkaa varsinainen teksti
 \pagenumbering{arabic}
 
-\chapter{Johdanto}
+% ------------
+% Add your chapters here
+% ------------
+\include{./chapters/johdanto}
+\include{./chapters/opinnaytetyon-rakenne}
 
-Tampereen teknillisen yliopiston perustutkintojen opinnäytetöitä ovat
-kandidaatintyö ja diplomityö. Lisäksi tehdään kirjallisia
-harjoitustöitä, joissa tätä ohjetta voidaan käyttää soveltuvin osin.
 
-Tämä pohja on tarkoitettu auttamaan työn kirjoittamista \LaTeX:n
-kanssa. Oppaita itse \LaTeX:n käyttöön löytyy kattavasti verkosta,
-esimerkiksi Wikipediasta. Myös seuraava opas on hyvä lähtökohta
-aloittelijoille:
-\begin{quote}
-http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf
-\end{quote}
-
-\chapter{Opinnäytetyön rakenne}
-
-Tässä esimerkkejä luvuista ja aliluvuista.
-
-\section{Lähdeluettelo}
-
-Lähdeluettelo voi \LaTeX:ssa tehdä joko tietokantamuotoisesti
-\textit{bibtex}-käskyn avulla tai vaihtoehtoisesti tässä esitetyllä tyylillä.
-Lisätietoa löytyy esim. Wikipediasta ''\textit{bibtex}''-hakusanalla.
-
-Tältä näyttää viittaus perinteisellä numeromerkinnällä \cite{Hirs,Mittelbach}.
-
-% Huom.: oikeaoppinen tapa viitata olisi seuraava:
-%
-% ...numeromerkinnällä~\cite{Hirs}.
-%
-% Merkintä "~" toimii kuten välilyönti, mutta estää rivinvaihdon
-% ja seuraavan rivin alkamisen rumasti viittauksella.
-
-\subsection{Aliesimerkki}
-
-Turhaa tekstiä esimerkin vuoksi.
-
-\section{Matemaattisista merkinnöistä}
-
-\LaTeX:lla yhtälöiden kirjoittaminen on helppoa. Seuraavassa ensin esimerkki
-\begin{equation}
-  \label{eq:fourier}
-  G^+(t,t')= \int G^+(E) exp[-iE(t-t')/\hbar] dE,
-\end{equation}
-jonka jälkeen kappale jatkuu näin.
-Tekstissä kaavat $G^+(t,t')= \int G^+(E) exp[-iE(t-t')/\hbar] dE$ näyttävät
-tällaisilta. Kaavoihin (ks. \ref{eq:fourier}) on myös helppo viitata.
-
-% Esimerkkikuva.
-% Huomaa, että useimmat ohjelmat latovat PDF-kuvan
-% A4-sivulle, jolloin kuvassa on mukana paljon tyhjää.
-% Tämän voi poistaa PDF-editoreilla. Esim.
-% PDF-X-Change-ohjelmistossa on toiminto "remove white spaces".
-%
-% Huomaa myös, että Latex sijoittaa kuvan aikaisintaan
-% tähän kohtaan tekstissä. Yleensä kuvat kannattaa
-% ladata n. sivun verran aikaisemmin kun niihin viitataan.
-% Muuten seuraava sopiva paikka saattaa tulla vasta
-% parin sivun päähän viittauksesta.
-
-\begin{figure}[t]
-\begin{center}
-\end{center}
-\caption{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
-\label{fig:esimKuva}
-\end{figure}
-
-\section{Kuvat}
-
-Latexiin voi tuoda kuvia useassa eri formaatissa.
-Näppärintä on käyttää pdflatex-kääntäjää, jolloin
-sallitut formaatit ovat \verb+*.png+, \verb+*.jpg+
-sekä \verb+*.pdf+. Kuvassa~\ref{fig:esimKuva} on
-PDF-formaatissa tuotu Matlabilla tehty
-esimerkkikuva.
-
+% ------------
+% References and appendix, comment out as needed
+% ------------
 \include{./partials/references}
 \include{./partials/appendix}
 
 \end{document}
-
