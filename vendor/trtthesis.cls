@@ -182,16 +182,6 @@
 \newcommand\chapterheadafter{45pt}
 \newcommand\chapfigname{\thechapter}
 
-\renewcommand\theequation
-  {\ifnum \c@chapter>\z@ \chapfigname.\fi \@arabic\c@equation}
-
-\renewcommand \thefigure
-     {\ifnum \c@chapter>\z@ \chapfigname.\fi \@arabic\c@figure}
-
-\renewcommand \thetable
-     {\ifnum \c@chapter>\z@ \chapfigname.\fi \@arabic\c@table}
-
-
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}% skandinaaviset kirjasimet
 \RequirePackage{graphicx}% grafiikkapaketti
@@ -203,6 +193,7 @@
 \RequirePackage{rotating}% taulukoiden ja kuvien kääntely
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
+\RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 
 \renewcommand\tableofcontents{%
     \if@twocolumn
@@ -245,6 +236,37 @@
 {\normalfont ##1\hfil}}}
 {\end{list}}
 
+% ------------
+% Caption styles
+%
+% Captions are in the form _*{type} {number}.*_ {caption}
+% ------------
+
+\usepackage[labelsep=period]{caption}
+\captionsetup[figure]{labelfont={bf,it},textfont=it}
+\renewcommand{\thetable}    {\arabic{table}}
+\renewcommand{\thefigure}   {\arabic{figure}}
+\renewcommand{\thesubtable} {\arabic{subtable}}
+\renewcommand{\thesubfigure}{\arabic{subfigure}}
+
+
+% ------------
+% Images
+%
+% The first parameter is width of the image, and defaults to
+% 70% of page width.
+% Usage example: \centeredpicture[1.0]{esimKuva}{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
+% ------------
+
+\newcommand{\centeredpicture}[3][0.7]{
+  \begin{figure}[h]
+  \begin{center}
+  \includegraphics[width=#1\textwidth]{#2}
+  \end{center}
+  \caption{#3}
+  \label{fig:#2}
+  \end{figure}
+}
 
 %%
 %% End of file `trtthesis.cls'.
