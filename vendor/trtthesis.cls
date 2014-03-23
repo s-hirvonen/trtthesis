@@ -165,8 +165,8 @@
 \setlength\textheight{24cm} % tekstin korkeus
 \setlength\headheight{15pt} % yläotsakkeen korkeus
 \setlength\headsep{0.8cm}   % tila yläotsakkeen alla
-\setlength\parindent{0.5cm} % vaihda 0:ksi tarvittaessa
-\setlength\parskip{0pt}     % vaihta 12pt:hen tarvittaessa
+\setlength\parindent{0cm} % vaihda 0:ksi tarvittaessa
+\setlength\parskip{12pt}     % vaihta 12pt:hen tarvittaessa
 \setlength\footskip{30pt}   % tila alaviitteen yllä
 \setlength\voffset{-1.3cm}  % ulommat marginaalit
 \setlength\hoffset{0cm}     % ulommat marginaalit
