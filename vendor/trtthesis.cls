@@ -247,4 +247,4 @@
 
 
 %%
-%% End of file `tutthesis.cls'.
+%% End of file `trtthesis.cls'.

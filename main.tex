@@ -6,11 +6,12 @@
 % Muokkaaja: Heikki Huttunen (heikki.huttunen@tut.fi) 31.7.2012.
 
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
-\usepackage[small]{caption}% kuvatekstien kirjasinkoko ja asettelu
-\pagenumbering{Roman}
+\usepackage[small]{caption} % kuvatekstien kirjasinkoko ja asettelu
+\pagenumbering{roman}
 % alkuvalmistelut loppuu
 
 \begin{document}
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % ------------
 % The document head consists of the cover page, abstracts in both
@@ -21,7 +22,7 @@
 \include{./partials/abstract-finnish}
 \include{./partials/abstract-english}
 \include{./partials/preface-finnish}
-\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
+
 \tableofcontents
 %\listoffigures
 %\listoftables
@@ -38,7 +39,6 @@
 % ------------
 \include{./chapters/johdanto}
 \include{./chapters/opinnaytetyon-rakenne}
-
 
 % ------------
 % References and appendix, comment out as needed
