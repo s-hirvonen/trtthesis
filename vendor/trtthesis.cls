@@ -17,7 +17,7 @@
 %% and is also included in this repository.
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{trtthesis}
+\ProvidesClass{vendor/trtthesis}
               [2006/10/16 v0.1f
  Extension to LaTeX report document class]
 
@@ -42,11 +42,86 @@
 % Table of contents
 % -----------
 
-% add \chapter* to the table of contents
+% Chapters that don't have numbering but are wanted to
+% show up in Table of Contents are marked with \nnchapter
 \newcommand{\nnchapter}[1]{
     \chapter*{#1}
-    \addcontentsline{toc}{chapter}{#1}
+    \addcontentsline{toc}{chapter}{\MakeUppercase#1}
 }
+
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \nnchapter{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+}
+
+\renewcommand\@dotsep{0}
+%\newcommand*\l@appendix{\@dottedtocline{1}{0.0em}{3.8em}}
+\renewcommand*\l@chapter{\@dottedtocline{1}{0.0em}{1.5em}} % kommentoituna hyvä
+\renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{3.2em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{6.5em}{4.1em}}
+\renewcommand*\l@paragraph{\@dottedtocline{4}{9.5em}{5em}}
+\renewcommand*\l@subparagraph{\@dottedtocline{5}{11.5em}{6em}}
+
+\renewcommand*\l@chapter[2]{
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.4em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \textbf{\textsf{\uppercase{#1}\nobreak\leaders\hbox{$\m@th
+        	\mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}
+        \hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.4em \@plus\p@
+}
+
+\renewcommand*\l@section[2]{%
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.1em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \hskip 2.5em
+      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.1em \@plus\p@
+}
+
+\renewcommand*\l@subsection[2]{%
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.1em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \hskip 5em
+      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.1em \@plus\p@
+}
+
+% ----------
 
 \if@twoside
   \def\ps@headings{%
@@ -190,7 +265,7 @@
 \setlength\textheight{24cm} % tekstin korkeus
 \setlength\headheight{15pt} % yläotsakkeen korkeus
 \setlength\headsep{0.8cm}   % tila yläotsakkeen alla
-\setlength\parindent{0cm} % vaihda 0:ksi tarvittaessa
+\setlength\parindent{0cm}   % vaihda 0:ksi tarvittaessa
 \setlength\footskip{30pt}   % tila alaviitteen yllä
 \setlength\voffset{-1.3cm}  % ulommat marginaalit
 \setlength\hoffset{0cm}     % ulommat marginaalit
@@ -219,26 +294,7 @@
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
 
-\renewcommand\tableofcontents{%
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \nnchapter{\contentsname
-        \@mkboth{%
-           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \@starttoc{toc}%
-    \if@restonecol\twocolumn\fi
-    }
 
-%\newcommand*\l@appendix{\@dottedtocline{1}{0.0em}{3.8em}}
-\renewcommand*\l@chapter{\@dottedtocline{1}{0.0em}{1.5em}} % kommentoituna hyvä
-\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{3.2em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{6.5em}{4.1em}}
-\renewcommand*\l@paragraph{\@dottedtocline{4}{9.5em}{5em}}
-\renewcommand*\l@subparagraph{\@dottedtocline{5}{11.5em}{6em}}
 
 % asetetaan headerit ja footerit kuntoon
 \pagestyle{fancyplain}
