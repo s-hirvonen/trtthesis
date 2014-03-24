@@ -191,7 +191,6 @@
 \setlength\headheight{15pt} % yläotsakkeen korkeus
 \setlength\headsep{0.8cm}   % tila yläotsakkeen alla
 \setlength\parindent{0cm} % vaihda 0:ksi tarvittaessa
-\setlength\parskip{12pt}     % vaihta 12pt:hen tarvittaessa
 \setlength\footskip{30pt}   % tila alaviitteen yllä
 \setlength\voffset{-1.3cm}  % ulommat marginaalit
 \setlength\hoffset{0cm}     % ulommat marginaalit
@@ -218,6 +217,7 @@
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
+\RequirePackage{parskip}
 
 \renewcommand\tableofcontents{%
     \if@twocolumn
