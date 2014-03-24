@@ -38,6 +38,15 @@
 \usepackage{setspace}
 \setstretch{1.2}
 
+% -----------
+% Table of contents
+% -----------
+
+% add \chapter* to the table of contents
+\newcommand{\nnchapter}[1]{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+}
 
 \if@twoside
   \def\ps@headings{%
@@ -216,7 +225,7 @@
     \else
       \@restonecolfalse
     \fi
-    \chapter*{\MakeUppercase{\contentsname}
+    \nnchapter{\contentsname
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
     \@starttoc{toc}%
