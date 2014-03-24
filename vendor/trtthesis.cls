@@ -23,6 +23,22 @@
 
 \LoadClassWithOptions{report}
 
+% ------------
+% Typography
+%
+% Headings : TEX Gyre Heros
+% Copy     : Times
+% ------------
+\usepackage{tgheros}
+\usepackage{mathptmx}
+
+% -----------
+% Line height
+% -----------
+\usepackage{setspace}
+\setstretch{1.2}
+
+
 \if@twoside
   \def\ps@headings{%
       \let\@oddfoot\@empty\let\@evenfoot\@empty
@@ -88,14 +104,14 @@
                     \fi}
 \def\@makechapterhead#1{%
   \vspace*{\chapterheadbefore}%
-  {\parindent \z@ \raggedright \normalfont
+  {\parindent \z@ \raggedright \normalfont {\fontsize{18pt}{1em}
     \ifnum \c@secnumdepth >\m@ne
-        \bf\textsf{\Large{\tutchapter}} % Chapter number
+       	\bf\textsf{\tutchapter} % Chapter number
     \fi
     \hspace*{\chapterspace}
-    \bf\Large \textsf{\MakeUppercase{%
+    \bf \textsf{\MakeUppercase{%
       #1
-    }}\par                         % chapter title
+    }}}\par                         % chapter title
     \vspace{\chapterheadafter}%                % add vertical space
   }}
 \def\@schapter#1{\if@twocolumn
@@ -174,12 +190,11 @@
 \setlength\evensidemargin{1.5cm} % sisemmät marginaalit parillisille sivuille
 \setlength\topmargin{0.0cm} % sisemmät marginaalit
 \setlength\brokenpenalty{1000}
-\renewcommand{\baselinestretch}{1.2}
 
 \newlength\chapterspace
-\setlength\chapterspace{0.4cm}
+\setlength\chapterspace{0.4cm} % Tila otsikon numeron ja nimen välillä
 \newcommand\chapterheadbefore{26pt}
-\newcommand\chapterheadafter{45pt}
+\newcommand\chapterheadafter{42pt}
 \newcommand\chapfigname{\thechapter}
 
 \RequirePackage[T1]{fontenc}
