@@ -18,10 +18,14 @@
 \printtext%
 }{}{}
 
+% Separate location and publisher with a comma instead of a colon
+\xpatchbibmacro{publisher+location+date}{\addcolon}{\addcomma}{}{}
+
 % All authors listed as Surname, Initial
 \DeclareNameAlias{sortname}{last-first}
 
 % ------------
 % Bibliography output
 % ------------
+\nocite{*}
 \printbibliography
