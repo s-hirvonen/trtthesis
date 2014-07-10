@@ -10,12 +10,16 @@
 % \xapptobibmacro{<name>}{<code to append>}{<success>}{<failure>}
 % ------------
 
+% No parens around publication year
 \xpatchbibmacro{date+extrayear}{%
 	\printtext[parens]%
 }{%
 \setunit{\addperiod\space}%
 \printtext%
 }{}{}
+
+% All authors listed as Surname, Initial
+\DeclareNameAlias{sortname}{last-first}
 
 % ------------
 % Bibliography output
