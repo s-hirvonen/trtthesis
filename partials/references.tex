@@ -2,8 +2,18 @@
 \addcontentsline{toc}{chapter}{Lähteet} % Lisää tämäkin sisällysluetteloon
 \renewcommand{\bibname}{Lähteet}
 
-\printbibliography
+% ------------
+% Bibliography style modifications
+% ------------
 
-% seuraavia voi käyttää bibtex:n kanssa (edellyttää tiedoston kirjat.bib)
-%\bibliographystyle{plain}
-%\bibliography{kirjat}
+\xpatchbibmacro{date+extrayear}{%
+	\printtext[parens]%
+}{%
+\setunit{\addperiod\space}%
+\printtext%
+}{}{}
+
+% ------------
+% Bibliography output
+% ------------
+\printbibliography
