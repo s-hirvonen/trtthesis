@@ -2,41 +2,6 @@
 \addcontentsline{toc}{chapter}{Lähteet} % Lisää tämäkin sisällysluetteloon
 \renewcommand{\bibname}{Lähteet}
 
-% ------------
-% Bibliography style modifications
-% using the xpatch package. Commands:
-% \xpatchbibmacro{<name>}{<search>}{<replace>}{<success>}{<failure>}
-% \xpretobibmacro{<name>}{<code to prepend>}{<success>}{<failure>}
-% \xapptobibmacro{<name>}{<code to append>}{<success>}{<failure>}
-% ------------
-
-% No parens around publication year
-\xpatchbibmacro{date+extrayear}{%
-	\printtext[parens]%
-}{%
-\setunit{\addperiod\space}%
-\printtext%
-}{}{}
-
-% Separate location and publisher with a comma instead of a colon
-\xpatchbibmacro{publisher+location+date}{\addcolon}{\addcomma}{}{}
-
-% Title: no quotes or italics
-\DeclareFieldFormat[article,inproceedings,book]{title}{#1}
-
-% All authors listed as Surname, Initial
-\DeclareNameFormat{last-first}{%
-	\iffirstinits
-	{\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
-	{\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
-	\usebibmacro{name:andothers}}
-
-\renewcommand*{\finalnamedelim}{%
-	\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
-	\space\&\space
-}
-
-\DeclareNameAlias{sortname}{last-first}
 
 % ------------
 % Bibliography output
