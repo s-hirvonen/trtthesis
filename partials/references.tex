@@ -21,6 +21,9 @@
 % Separate location and publisher with a comma instead of a colon
 \xpatchbibmacro{publisher+location+date}{\addcolon}{\addcomma}{}{}
 
+% Title: no quotes or italics
+\DeclareFieldFormat[article,inproceedings,book]{title}{#1}
+
 % All authors listed as Surname, Initial
 \DeclareNameAlias{sortname}{last-first}
 
