@@ -41,6 +41,7 @@
 % -----------
 % Table of contents
 % -----------
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % Chapters that don't have numbering but are wanted to
 % show up in Table of Contents are marked with \nnchapter
