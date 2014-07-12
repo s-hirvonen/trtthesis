@@ -4,3 +4,7 @@
 *.aux
 *.gz
 *.toc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
