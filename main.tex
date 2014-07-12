@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper,finnish]{vendor/trtthesis}
+\graphicspath{ {./vendor/images/} {./images/} }
+
+% LaTeX-tiedosto opinnäytepohjaksi
+% Tekijä: Sami Paavilainen
+% Muokkaaja: Heikki Huttunen (heikki.huttunen@tut.fi) 31.7.2012.
+% Muokkaaja: Samuli Hirvonen (samuli.hirvonen@student.tut.fi) 23.3.2014
+
+\usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
+\usepackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,firstinits=true]{biblatex}
+\usepackage{csquotes}
+\addbibresource{./vendor/references.bib}
+\pagenumbering{roman}
+
+\begin{document}
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
+
+% ------------
+% The document head consists of the cover page, abstracts in both
+% Finnish and English, preface and the table of contents.
+% Comment these lines out as needed
+% ------------
+
+\include{./partials/cover-page}
+\include{./partials/abstract-finnish}
+\include{./partials/abstract-english}
+\include{./partials/preface-finnish}
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+\include{./partials/terms-and-definitions-finnish}
+
+% Content start
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{}{}}
+\lhead{\fancyplain{}{\leftmark}}
+\pagenumbering{arabic}
+
+% ------------
+% Add your chapters here
+% ------------
+
+\include{./vendor/chapters/johdanto}
+\include{./vendor/chapters/opinnaytetyon-rakenne}
+\include{./vendor/chapters/usage-examples}
+
+% ------------
+% References and appendix, comment out as needed
+% ------------
+
+\include{./partials/references}
+\include{./partials/appendix}
+
+\end{document}

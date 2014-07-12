@@ -1,0 +1,53 @@
+\chapter{Käyttöesimerkkejä}
+
+Tässä luvussa esitellään opinnäytetyössä mahdollisesti esiintyviä dokumentin ominaisuuksia ja kuinka niitä voidaan käyttää \LaTeX:n avulla. 
+
+\section{Viittaustekniikka}
+
+Opinnäytetyössä käytetään BibLaTeX:n authoryear-tyyliä, joka on muokattu vastaamaan TTY:n opinnäytetyöohjetta. Seuraavassa viittausesimerkkejä:
+
+\begin{itemize}
+	\item \textcite[ss.~32--34]{lehman2014biblatex} mukaan ...
+	\item Many ERP implementations have been classified as failures because they did not achieve predetermined corporate goals \cite{umble2003enterprise}.
+	\item ... sivunumerot ja monta lähdettä \cites[189]{osmani2013}[1]{knuth1973fundamental}.
+	\item Viittaus voi olla myös usean virkkeen mittainen. Tällöin käytetään \verb+\parencite*+-komentoa. \cite*{somers2001impact}
+\end{itemize}
+
+Lähdeluettelo koostetaan automaattisesti tekstissä esiintyvien viitteiden mukaan.
+Tästä johtuen dokumentin kääntäminen pdf-tiedostoksi vaatii useamman \LaTeX-kääntäjän ajon.
+Dokumentti kannattaakin kääntää komennolla \texttt{pdflatex biber pdflatex pdflatex}, jotta sekä viittaukset että lähdeluettelo päivittyvät oikein.
+
+Lähdeluettelon esitystapa on kuvattu taulukossa \ref{table:bibliography}.
+
+\begin{table}
+\caption{Lähteiden merkintätapa lähdeluettelossa}
+\label{table:bibliography}
+\begin{center}
+\begin{tabular}{ | p{7cm} | p{7cm} | }
+	\hline
+	\textbf{Tiedot ja niiden järjestys} & \textbf{Esimerkki} \\ \hline
+	Kirja \newline 	Tekijät ja julkaisuvuosi. Otsikko. (Painos, jos useita.), Julkaisupaikka, Julkaisija. Sivumäärä. & \fullcite{basar1995dynamic}. \\ \hline
+	Artikkeli \newline Tekijät ja julkaisuvuosi. Otsikko. Lehden nimi. Vol. x(nro), sivut. & \fullcite{umble2003enterprise}. \\ \hline
+	Konferenssiesitelmät \newline Tekijät ja julkaisuvuosi. Otsikko. Konferenssin nimi, Paikka, Aika, Julkaisupaikka, Julkaisija, sivut. & \fullcite{somers2001impact}. \\ \hline 
+	Artikkeli kokoelmateoksessa \newline Tekijät ja julkaisuvuosi. Otsikko. Teoksen toimittajat. Teoksen nimi. (Painos, jos useita). Julkaisupaikka, Julkaisija, sivut. & \fullcite{osmani2013}. \\ \hline
+	Verkkojulkaisu \newline Tekijä. Julkaisuvuosi. Julkaisun nimi. URL-osoite. Viittauksen päiväys. & \fullcite{lehman2014biblatex}. \\
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Vesibulum varius}
+
+Vivamus nec ullamcorper felis, sed egestas dui. Suspendisse condimentum metus dapibus, viverra mauris vel, malesuada felis. Praesent imperdiet orci a elit aliquet hendrerit. Nullam et euismod enim. Etiam euismod tellus sed est condimentum adipiscing. Suspendisse vel tortor quis nisi fermentum porta. Ut quis tempus eros, et aliquam ligula. Quisque nec nisl libero. Pellentesque euismod nulla id risus egestas, vitae convallis eros vestibulum. Praesent aliquet fringilla sagittis.
+
+Nunc id arcu lacus. Nunc lobortis faucibus sollicitudin. Fusce semper pulvinar nulla ac posuere. Ut non sapien elementum, blandit dolor et, aliquam erat. Aliquam feugiat est dui, sed accumsan turpis dictum non. Nullam scelerisque id ipsum vel sodales. Nullam id iaculis mauris, pretium vestibulum enim. Phasellus ligula risus, feugiat suscipit consectetur quis, varius vitae justo. Etiam aliquet aliquet risus, a molestie nisl placerat vitae. Donec at pulvinar mi. Vivamus viverra volutpat purus id elementum. Sed a elementum nisi. Maecenas eu semper tortor, nec congue ligula. Sed eget lectus facilisis, hendrerit nibh a, ornare libero. Etiam elementum leo sit amet velit fringilla aliquam.
+
+\subsection{Nunc id arcu lacus}
+
+Vivamus nec ullamcorper felis, sed egestas dui. Suspendisse condimentum metus dapibus, viverra mauris vel, malesuada felis. Praesent imperdiet orci a elit aliquet hendrerit. Nullam et euismod enim. Etiam euismod tellus sed est condimentum adipiscing. Suspendisse vel tortor quis nisi fermentum porta. Ut quis tempus eros, et aliquam ligula. Quisque nec nisl libero. Pellentesque euismod nulla id risus egestas, vitae convallis eros vestibulum. Praesent aliquet fringilla sagittis.
+
+\subsection{Ut non sapien elemnum}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at aliquam lectus. Nunc tincidunt suscipit vestibulum. Donec placerat nisl vitae massa congue, nec accumsan risus tincidunt. Donec nec arcu tortor. Nam pulvinar elementum felis. Sed sapien ante, malesuada vel libero eget, mattis ultrices elit. Duis ut bibendum justo, ut lobortis sem. Integer ac rhoncus mauris.
+
+Vestibulum in odio sed elit aliquam placerat. Duis a diam erat. Phasellus erat nulla, laoreet in purus sed, volutpat feugiat risus. Aenean pretium augue vel elementum rhoncus. Integer a massa nec felis ultrices lacinia. Vivamus nec orci a tortor dictum rhoncus. Maecenas suscipit, massa nec pellentesque varius, nisl arcu bibendum purus, sodales venenatis purus magna vel turpis.
