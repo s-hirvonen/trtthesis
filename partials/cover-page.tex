@@ -1,3 +1,8 @@
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\makeatother
+
 \thispagestyle{empty}
 
 \vspace*{-.5cm}\noindent
@@ -9,9 +14,11 @@
 
 \vspace{6.8cm}
 
-\noindent{\bf\large \textsf{TEKIJÄN NIMI}}\\
-{\bf\large \textsf{OPINNÄYTETYÖN OTSIKKO}}\\
-\textsf{Diplomityö}
+\MakeUppercase{{\large\textbf{\textsf{%
+\uppercase{\theauthor}\newline
+\thetitle\newline
+}}}}
+\textsf{\documenttype{}}
 
 \vspace{8.7cm} % jos kaksi otsikkoriviä vaihda -> 6.7cm
 
