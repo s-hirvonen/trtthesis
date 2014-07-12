@@ -294,6 +294,8 @@
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
+\RequirePackage{csquotes} 
+\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 
 
 
