@@ -41,6 +41,7 @@
 % -----------
 % Table of contents
 % -----------
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % Chapters that don't have numbering but are wanted to
 % show up in Table of Contents are marked with \nnchapter
@@ -293,6 +294,8 @@
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
+\RequirePackage{csquotes} 
+\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 
 
 

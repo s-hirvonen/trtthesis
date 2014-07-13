@@ -6,14 +6,25 @@
 % Muokkaaja: Heikki Huttunen (heikki.huttunen@tut.fi) 31.7.2012.
 % Muokkaaja: Samuli Hirvonen (samuli.hirvonen@student.tut.fi) 23.3.2014
 
+% ------------
+% Document information
+% ------------
+\title{Opinnäytetyön LaTeX-pohja}
+\author{Samuli Hirvonen}
+\newcommand{\documenttype}{Mallidokumentti} % Työn tyyppi kansilehdellä, esim. "diplomityö"
+\newcommand{\inspector}   {Prof. Xxxx Xxxx} % Työn tarkastaja
+\newcommand{\approvaldate}{xx.xx.xxxx}      % Työn hyväksyttämispäivämäärä
+
+
+% ------------
+% Package configuration
+% ------------
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
 \usepackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,firstinits=true]{biblatex}
-\usepackage{csquotes}
-\addbibresource{./vendor/references.bib}
+\addbibresource{./vendor/references.bib} % set this to reference your .bib file
 \pagenumbering{roman}
 
 \begin{document}
-\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % ------------
 % The document head consists of the cover page, abstracts in both
@@ -25,10 +36,7 @@
 \include{./partials/abstract-finnish}
 \include{./partials/abstract-english}
 \include{./partials/preface-finnish}
-
-\tableofcontents
-%\listoffigures
-%\listoftables
+\include{./partials/table-of-contents}
 \include{./partials/terms-and-definitions-finnish}
 
 % Content start
