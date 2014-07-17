@@ -39,8 +39,26 @@
 \setstretch{1.2}
 
 % -----------
+% Precontent environment
+% -----------
+\newenvironment{precontent}{
+  \pagenumbering{roman}}{}
+
+% -----------
+% Content environment
+% -----------
+\newenvironment{content}{
+  \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ ##1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{}{}}
+  \lhead{\fancyplain{}{\leftmark}}
+  \pagenumbering{arabic}
+}{}
+
+
+% -----------
 % Table of contents
 % -----------
+\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % Chapters that don't have numbering but are wanted to
 % show up in Table of Contents are marked with \nnchapter
@@ -293,8 +311,20 @@
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
+\RequirePackage{csquotes} 
+\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
+\RequirePackage{mfirstuc}
 
+% kuukausien nimet
+\newcommand{\monthyear}{\ifnum\number\day<10 0\fi%
+	\ifcase \month \or Tammikuu\or Helmikuu\or Maaliskuu\or Huhtikuu\or Toukokuu%
+	\or Kesäkuu\or Heinäkuu\or Elokuu\or Syyskuu\or Lokakuu\or Marraskuu\or Joulukuu\fi, %
+	\number \year}
 
+\newcommand{\monthyearenglish}{\ifnum\number\day<10 0\fi%
+  \ifcase \month \or January\or February\or March\or April\or May%
+  \or June\or July\or August\or September\or October\or November\or December\fi, %
+  \number \year}
 
 % asetetaan headerit ja footerit kuntoon
 \pagestyle{fancyplain}
