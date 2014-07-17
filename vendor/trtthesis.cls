@@ -39,6 +39,23 @@
 \setstretch{1.2}
 
 % -----------
+% Precontent environment
+% -----------
+\newenvironment{precontent}{
+  \pagenumbering{roman}}{}
+
+% -----------
+% Content environment
+% -----------
+\newenvironment{content}{
+  \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ ##1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{}{}}
+  \lhead{\fancyplain{}{\leftmark}}
+  \pagenumbering{arabic}
+}{}
+
+
+% -----------
 % Table of contents
 % -----------
 \renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi

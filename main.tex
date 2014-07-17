@@ -20,10 +20,8 @@
 % Package configuration
 % ------------
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
-\usepackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,firstinits=true]{biblatex}
+\usepackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,firstinits=true,uniquename=init]{biblatex}
 \addbibresource{./vendor/references.bib} % set this to reference your .bib file
-\pagenumbering{roman}
-
 \usepackage[nodayofweek]{datetime}
 \usepackage{refcount,lastpage}
 \begin{document}
@@ -34,18 +32,17 @@
 % Comment these lines out as needed
 % ------------
 
+\begin{precontent}
 \include{./partials/cover-page}
 \include{./partials/abstract-finnish}
 \include{./partials/abstract-english}
 \include{./partials/preface-finnish}
 \include{./partials/table-of-contents}
 \include{./partials/terms-and-definitions-finnish}
+\end{precontent}
 
 % Content start
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{}{}}
-\lhead{\fancyplain{}{\leftmark}}
-\pagenumbering{arabic}
+\begin{content}
 
 % ------------
 % Add your chapters here
@@ -62,4 +59,5 @@
 \include{./partials/references}
 \include{./partials/appendix}
 
+\end{content}
 \end{document}
