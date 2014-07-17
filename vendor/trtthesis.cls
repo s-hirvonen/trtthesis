@@ -296,8 +296,18 @@
 \RequirePackage{parskip}
 \RequirePackage{csquotes} 
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
+\RequirePackage{mfirstuc}
 
+% kuukausien nimet
+\newcommand{\monthyear}{\ifnum\number\day<10 0\fi%
+	\ifcase \month \or Tammikuu\or Helmikuu\or Maaliskuu\or Huhtikuu\or Toukokuu%
+	\or Kesäkuu\or Heinäkuu\or Elokuu\or Syyskuu\or Lokakuu\or Marraskuu\or Joulukuu\fi, %
+	\number \year}
 
+\newcommand{\monthyearenglish}{\ifnum\number\day<10 0\fi%
+  \ifcase \month \or January\or February\or March\or April\or May%
+  \or June\or July\or August\or September\or October\or November\or December\fi, %
+  \number \year}
 
 % asetetaan headerit ja footerit kuntoon
 \pagestyle{fancyplain}
