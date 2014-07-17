@@ -1,6 +1,6 @@
 # Tuotantotalouden ja rakentamisen tiedekunnan opinnäytetyöpohja: LaTEX-pohja
 
-Versio 1.0.0
+Versio 1.1.0
 
 ## Sisältää
 
