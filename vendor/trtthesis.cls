@@ -40,6 +40,7 @@
 \RequirePackage{csquotes}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{mfirstuc}
+\RequirePackage{titlesec} % Otsikkotyylit
 
 % ------------
 % Typography
@@ -204,6 +205,17 @@
         ##1}}}}
 \fi
 
+% -------------
+% Chapter title
+% -------------
+\titleformat{\chapter}
+        {\Large\sffamily\bfseries}
+        {\makebox[2em][l]{\thechapter.}}
+        {0pt}
+        {\uppercase}
+\titlespacing{\chapter}{0pt}{42pt}{42pt}
+
+
 \newcommand\chaptertocstyle{chapter}
 \newcommand\chaptertocstr{\thechapter.}
 \newcommand\tutchapter{\thechapter.}
@@ -214,52 +226,6 @@
 \renewcommand\theparagraph    {\thesubsubsection.\@arabic\c@paragraph}
 \renewcommand\thesubparagraph {\theparagraph.\@arabic\c@subparagraph}
 
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{plain}%
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp\space\thechapter.}%
-                         \addcontentsline{toc}{\chaptertocstyle}%
-                                   {\protect\numberline{\chaptertocstr}#1}%
-                    \else
-                      \addcontentsline{toc}{\chaptertocstyle}{\chaptertocstr}%
-                    \fi
-                    \chaptermark{#1}%
-                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
-                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
-                    \if@twocolumn
-                     \@topnewpage[\@makechapterhead{#2}]%
-                    \else
-                      \@makechapterhead{#2}%
-                      \@afterheading
-                    \fi}
-\def\@makechapterhead#1{%
-  \vspace*{\chapterheadbefore}%
-  {\parindent \z@ \raggedright \normalfont {\fontsize{18pt}{1em}
-    \ifnum \c@secnumdepth >\m@ne
-       	\bf\textsf{\tutchapter} % Chapter number
-    \fi
-    \hspace*{\chapterspace}
-    \bf \textsf{\MakeUppercase{%
-      #1
-    }}}\par                         % chapter title
-    \vspace{\chapterheadafter}%                % add vertical space
-  }}
-\def\@schapter#1{\if@twocolumn
-                   \@topnewpage[\@makeschapterhead{#1}]%
-                 \else
-                   \@makeschapterhead{#1}%
-                   \@afterheading
-                 \fi}
-\def\@makeschapterhead#1{%
-  \vspace*{-22pt}%
-  {\parindent \z@ \raggedright
-    \bf\Large \textsf{\MakeUppercase{#1}}\par              % chapter title
-    \vspace{12pt}%                                 % add vertical space
-}}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-1.8ex  \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex \@minus \parskip}%
