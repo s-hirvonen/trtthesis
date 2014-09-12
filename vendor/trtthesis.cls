@@ -37,7 +37,7 @@
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
-\RequirePackage{csquotes} 
+\RequirePackage{csquotes}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{mfirstuc}
 
@@ -79,18 +79,13 @@
 % -------
 % Headers
 % -------
-
 \pagestyle{fancyplain}
-\fancyhead[LE,RO]{\thepage}
 
 \rhead{\thepage}
 \chead{}
 \lhead{}
-\lfoot{}
-\cfoot{}
-\rfoot{}
+\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
-
 
 % -----------
 % Table of contents
