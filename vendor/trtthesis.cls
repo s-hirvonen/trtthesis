@@ -18,41 +18,78 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{vendor/trtthesis}
-              [2006/10/16 v0.1f
- Extension to LaTeX report document class]
+        [2006/10/16 v0.1f Extension to LaTeX report document class]
 
 \LoadClassWithOptions{report}
+
+% -----------------
+% Required packages
+% -----------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}% skandinaaviset kirjasimet
+\RequirePackage{graphicx}% grafiikkapaketti
+\RequirePackage{subfigure}% mahdollistaa pikkukuvat..
+\RequirePackage{wrapfig}% pistaa tekstin kiertaan kuvan..
+\RequirePackage{fancyhdr}% tyylikkäämmät sivutukset...
+\RequirePackage{supertabular}% ylisivun mittaiset taulukot..
+\RequirePackage{rotating}% taulukoiden ja kuvien kääntely
+\RequirePackage{amsmath}% matematiikkakirjasto
+\RequirePackage{setspace}% rivivälin vaihtoon
+\RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
+\RequirePackage{parskip}
+\RequirePackage{csquotes} 
+\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
+\RequirePackage{mfirstuc}
 
 % ------------
 % Typography
 %
 % Headings : TEX Gyre Heros
-% Copy     : Times
 % ------------
-\usepackage{tgheros}
-\usepackage{mathptmx}
+\RequirePackage{tgheros}
+
+% ---------------------
+% Document measurements
+% ---------------------
+\RequirePackage[paper=a4paper,inner=4cm,outer=2cm,top=2.5cm,bottom=2.5cm,headsep=1em]{geometry}
 
 % -----------
 % Line height
 % -----------
-\usepackage{setspace}
+\RequirePackage{setspace}
 \setstretch{1.2}
 
-% -----------
+% ----------------------
 % Precontent environment
-% -----------
+% ----------------------
 \newenvironment{precontent}{
   \pagenumbering{roman}}{}
 
-% -----------
+% -------------------
 % Content environment
-% -----------
+% -------------------
 \newenvironment{content}{
   \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ ##1}{}}
   \renewcommand{\sectionmark}[1]{\markright{}{}}
   \lhead{\fancyplain{}{\leftmark}}
   \pagenumbering{arabic}
 }{}
+
+
+% -------
+% Headers
+% -------
+
+\pagestyle{fancyplain}
+\fancyhead[LE,RO]{\thepage}
+
+\rhead{\thepage}
+\chead{}
+\lhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
 
 
 % -----------
@@ -279,17 +316,7 @@
 % %    {\@arabic \c@chapter}:}%
 % }
 % TUT specific:
-\setlength\textwidth{15cm}  % tekstin leveys
-\setlength\textheight{24cm} % tekstin korkeus
-\setlength\headheight{15pt} % yläotsakkeen korkeus
-\setlength\headsep{0.8cm}   % tila yläotsakkeen alla
 \setlength\parindent{0cm}   % vaihda 0:ksi tarvittaessa
-\setlength\footskip{30pt}   % tila alaviitteen yllä
-\setlength\voffset{-1.3cm}  % ulommat marginaalit
-\setlength\hoffset{0cm}     % ulommat marginaalit
-\setlength\oddsidemargin{1.5cm} % sisemmät marginaalit parittomille sivuille
-\setlength\evensidemargin{1.5cm} % sisemmät marginaalit parillisille sivuille
-\setlength\topmargin{0.0cm} % sisemmät marginaalit
 \setlength\brokenpenalty{1000}
 
 \newlength\chapterspace
@@ -298,22 +325,6 @@
 \newcommand\chapterheadafter{42pt}
 \newcommand\chapfigname{\thechapter}
 
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}% skandinaaviset kirjasimet
-\RequirePackage{graphicx}% grafiikkapaketti
-\RequirePackage{psfrag}% mahdollistaa ps-tiedostojen muokkauksen jälkikäteen
-\RequirePackage{subfigure}% mahdollistaa pikkukuvat..
-\RequirePackage{wrapfig}% pistaa tekstin kiertaan kuvan..
-\RequirePackage{fancyhdr}% tyylikkäämmät sivutukset...
-\RequirePackage{supertabular}% ylisivun mittaiset taulukot..
-\RequirePackage{rotating}% taulukoiden ja kuvien kääntely
-\RequirePackage{amsmath}% matematiikkakirjasto
-\RequirePackage{setspace}% rivivälin vaihtoon
-\RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
-\RequirePackage{parskip}
-\RequirePackage{csquotes} 
-\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
-\RequirePackage{mfirstuc}
 
 % kuukausien nimet
 \newcommand{\monthyear}{\ifnum\number\day<10 0\fi%
@@ -325,16 +336,6 @@
   \ifcase \month \or January\or February\or March\or April\or May%
   \or June\or July\or August\or September\or October\or November\or December\fi, %
   \number \year}
-
-% asetetaan headerit ja footerit kuntoon
-\pagestyle{fancyplain}
-\rhead{\thepage}
-\chead{}
-\lhead{}
-\lfoot{}
-\cfoot{}
-\rfoot{}
-\renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
 
 \newenvironment*{termiluettelo}
 {\begin{list}{}{
