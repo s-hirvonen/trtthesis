@@ -61,27 +61,25 @@
 % ----------------------
 % Precontent environment
 % ----------------------
-\newenvironment{precontent}{
-  \pagenumbering{roman}}{}
+\newenvironment{precontent}{%
+        \pagenumbering{roman}}{}
 
 % -------------------
 % Content environment
 % -------------------
-\newenvironment{content}{
-  \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ ##1}{}}
-  \renewcommand{\sectionmark}[1]{\markright{}{}}
-  \lhead{\fancyplain{}{\leftmark}}
-  \pagenumbering{arabic}
-}{}
+\newenvironment{content}{%
+        \pagenumbering{arabic}}{}
 
 % -------
 % Headers
 % -------
 \pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{}{}}
 
-\rhead{\thepage}
+\lhead{\fancyplain{}{\nouppercase\leftmark}}
 \chead{}
-\lhead{}
+\rhead{\thepage}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
 
@@ -144,7 +142,7 @@
 % show up in Table of Contents are marked with \nnchapter
 \newcommand{\nnchapter}[1]{
     \chapter*{#1}
-    \addcontentsline{toc}{chapter}{\MakeUppercase#1}
+    \addcontentsline{toc}{chapter}{#1}
 }
 
 \renewcommand\@dotsep{0}
