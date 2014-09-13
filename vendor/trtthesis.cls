@@ -40,12 +40,13 @@
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
-\RequirePackage{parskip}
+\RequirePackage{parskip} % Vertical space instead of indent on new paragraph
 \RequirePackage{csquotes}
 \RequirePackage{setspace}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{titlesec} % Otsikkotyylit
 \RequirePackage{etoolbox} % Patch commands with \patchcmd
+\RequirePackage{lipsum}   % Used to generate placeholder content in sample chapters
 \RequirePackage[nodayofweek]{datetime}
 \RequirePackage{refcount,lastpage}
 \RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
@@ -55,36 +56,32 @@
 % Document measurements
 % ---------------------
 \RequirePackage[paper=a4paper,inner=4cm,outer=2cm,top=2.5cm,bottom=2.5cm,headsep=1em]{geometry}
-\setlength\parindent{0cm}   % No paragrapgh indent
 \setlength\brokenpenalty{1000}
 \setstretch{1.2} % Line height
 
 % ----------------------
 % Precontent environment
 % ----------------------
-\newenvironment{precontent}{
-  \pagenumbering{roman}}{}
+\newenvironment{precontent}{\pagenumbering{roman}}{}
 
 % -------------------
 % Content environment
 % -------------------
-\newenvironment{content}{
-  \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ ##1}{}}
-  \renewcommand{\sectionmark}[1]{\markright{}{}}
-  \lhead{\fancyplain{}{\leftmark}}
-  \pagenumbering{arabic}
-}{}
+\newenvironment{content}{\pagenumbering{arabic}}{}
 
 % -------
 % Headers
 % -------
 \pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{}{}}
 
-\rhead{\thepage}
-\chead{}
-\lhead{}
+\fancyhead[RE,LO]{\fancyplain{}{\nouppercase\leftmark}}
+\fancyhead[C]{}
+\fancyhead[LE,RO]{\thepage}
 \fancyfoot{}
-\renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
+\renewcommand{\headrulewidth}{0pt}
+\pagenumbering{gobble} % No page numbering until explicitly defined
 
 % -------------
 % Chapter title
@@ -126,16 +123,16 @@
 
 % Citation delimiter ; instead of ,
 \def\@citex[#1]#2{%
-  \let\@citea\@empty
-  \@cite{\@for\@citeb:=#2\do
-    {\@citea\def\@citea{;\penalty\@m\ }%
-     \edef\@citeb{\expandafter\@firstofone\@citeb}%
-     \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
-     \@ifundefined{b@\@citeb}{\mbox{\reset@font\bfseries ?}%
-       \G@refundefinedtrue
-       \@latex@warning
-         {Citation `\@citeb' on page \thepage \space undefined}}%
-       {\csname b@\@citeb\endcsname}}}{#1}}
+        \let\@citea\@empty
+        \@cite{\@for\@citeb:=#2\do
+        {\@citea\def\@citea{;\penalty\@m\ }%
+                \edef\@citeb{\expandafter\@firstofone\@citeb}%
+                \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+        \@ifundefined{b@\@citeb}{\mbox{\reset@font\bfseries ?}%
+                \G@refundefinedtrue
+                \@latex@warning
+                {Citation `\@citeb' on page \thepage \space undefined}}%
+                {\csname b@\@citeb\endcsname}}}{#1}}
 
 % -----------
 % Table of contents
@@ -145,65 +142,65 @@
 % show up in Table of Contents are marked with \nnchapter
 \newcommand{\nnchapter}[1]{
     \chapter*{#1}
-    \addcontentsline{toc}{chapter}{\MakeUppercase#1}
+    \addcontentsline{toc}{chapter}{#1}
 }
 
 \renewcommand\@dotsep{0}
-\renewcommand*\l@chapter{\@dottedtocline{1}{0.0em}{1.5em}} 
+\renewcommand*\l@chapter{\@dottedtocline{1}{0.0em}{1.5em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{3.2em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{6.5em}{4.1em}}
 \renewcommand*\l@paragraph{\@dottedtocline{4}{9.5em}{5em}}
 \renewcommand*\l@subparagraph{\@dottedtocline{5}{11.5em}{6em}}
 
 \renewcommand*\l@chapter[2]{
-    \addpenalty{-\@highpenalty}%
-    \vskip 0.4em \@plus\p@
-    \setlength\@tempdima{2.5em}%
-    \begingroup
-      \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \textbf{\textsf{\uppercase{#1}\nobreak\leaders\hbox{$\m@th
-        	\mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        \addpenalty{-\@highpenalty}%
+        \vskip 0.4em \@plus\p@
+        \setlength\@tempdima{2.5em}%
+        \begingroup
+        \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode
+        \textbf{\textsf{\uppercase{#1}\nobreak\leaders\hbox{$\m@th
+                \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
         mu$}
         \hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par
-      \penalty\@highpenalty
-    \endgroup
-    \vskip 0.4em \@plus\p@
+        \penalty\@highpenalty
+        \endgroup
+        \vskip 0.4em \@plus\p@
 }
 
 \renewcommand*\l@section[2]{%
-    \addpenalty{-\@highpenalty}%
-    \vskip 0.1em \@plus\p@
-    \setlength\@tempdima{2.5em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      \hskip 2.5em
-      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
-      \penalty\@highpenalty
-    \endgroup
-    \vskip 0.1em \@plus\p@
+        \addpenalty{-\@highpenalty}%
+        \vskip 0.1em \@plus\p@
+        \setlength\@tempdima{2.5em}%
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+        \hskip 2.5em
+        \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+        \penalty\@highpenalty
+        \endgroup
+        \vskip 0.1em \@plus\p@
 }
 
 \renewcommand*\l@subsection[2]{%
-    \addpenalty{-\@highpenalty}%
-    \vskip 0.1em \@plus\p@
-    \setlength\@tempdima{2.5em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      \hskip 5em
-      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
-      \penalty\@highpenalty
-    \endgroup
-    \vskip 0.1em \@plus\p@
+        \addpenalty{-\@highpenalty}%
+        \vskip 0.1em \@plus\p@
+        \setlength\@tempdima{2.5em}%
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+        \hskip 5em
+        \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+        \penalty\@highpenalty
+        \endgroup
+        \vskip 0.1em \@plus\p@
 }
 
 % ------------
@@ -215,9 +212,9 @@
 	\number \year}
 
 \newcommand{\monthyearenglish}{\ifnum\number\day<10 0\fi%
-  \ifcase \month \or January\or February\or March\or April\or May%
-  \or June\or July\or August\or September\or October\or November\or December\fi, %
-  \number \year}
+        \ifcase \month \or January\or February\or March\or April\or May%
+        \or June\or July\or August\or September\or October\or November\or December\fi, %
+        \number \year}
 
 % ---------------------
 % Terms and Definitions
@@ -250,13 +247,13 @@
 % Usage example: \centeredpicture[1.0]{esimKuva}{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
 % ------------
 \newcommand{\centeredpicture}[3][0.7]{
-  \begin{figure}[h]
-  \begin{center}
-  \includegraphics[width=#1\textwidth]{#2}
-  \end{center}
-  \caption{#3}
-  \label{fig:#2}
-  \end{figure}
+        \begin{figure}[h]
+        \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}
+        \end{center}
+        \caption{#3}
+        \label{fig:#2}
+        \end{figure}
 }
 
 %%
