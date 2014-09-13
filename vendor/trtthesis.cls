@@ -81,7 +81,8 @@
 \chead{}
 \rhead{\thepage}
 \fancyfoot{}
-\renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
+\renewcommand{\headrulewidth}{0pt}
+\pagenumbering{gobble} % No page numbering until explicitly defined
 
 % -------------
 % Chapter title
