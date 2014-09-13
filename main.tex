@@ -1,4 +1,5 @@
-\documentclass[twoside,12pt,finnish]{vendor/trtthesis}
+% For two-sided printing, add twoside to documentclass options
+\documentclass[12pt,finnish]{vendor/trtthesis} 
 \graphicspath{ {./vendor/images/} {./images/} }
 
 % LaTeX-tiedosto opinnäytepohjaksi
@@ -15,19 +16,17 @@
 \newcommand{\inspector}   {Prof. Xxxx Xxxx} % Työn tarkastaja
 \newcommand{\approvaldate}{xx.xx.xxxx}      % Työn hyväksyttämispäivämäärä
 
-
 % ------------
 % Package configuration
 % ------------
-\usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
-\usepackage{lipsum} % Used to create placeholder content, remove this
+\usepackage[finnish]{babel}              % Change this to match document language
 \addbibresource{./vendor/references.bib} % set this to reference your .bib file
+
 \begin{document}
 
 % ------------
-% The document head consists of the cover page, abstracts in both
-% Finnish and English, preface and the table of contents.
-% Comment these lines out as needed
+% Smaller works don't usually include preface and abstracts.
+% Comment these includes out as needed
 % ------------
 \include{./partials/cover-page}
 

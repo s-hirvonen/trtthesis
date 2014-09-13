@@ -46,6 +46,7 @@
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{titlesec} % Otsikkotyylit
 \RequirePackage{etoolbox} % Patch commands with \patchcmd
+\RequirePackage{lipsum}   % Used to generate placeholder content in sample chapters
 \RequirePackage[nodayofweek]{datetime}
 \RequirePackage{refcount,lastpage}
 \RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
