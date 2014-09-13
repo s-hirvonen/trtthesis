@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,finnish]{vendor/trtthesis}
+\documentclass[12pt,finnish]{vendor/trtthesis}
 \graphicspath{ {./vendor/images/} {./images/} }
 
 % LaTeX-tiedosto opinnäytepohjaksi
@@ -20,10 +20,7 @@
 % Package configuration
 % ------------
 \usepackage[finnish]{babel} % tavutus suomeksi, vaihda jos eri kieli
-\usepackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,firstinits=true,uniquename=init]{biblatex}
 \addbibresource{./vendor/references.bib} % set this to reference your .bib file
-\usepackage[nodayofweek]{datetime}
-\usepackage{refcount,lastpage}
 \begin{document}
 
 % ------------
@@ -56,7 +53,7 @@
 % References and appendix, comment out as needed
 % ------------
 
-\include{./partials/references}
+\printbibliography
 \include{./partials/appendix}
 
 \end{content}
