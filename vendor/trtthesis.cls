@@ -92,7 +92,7 @@
         {\makebox[2em][l]{\thechapter.}}
         {0pt}
         {\uppercase}
-\titlespacing{\chapter}{0pt}{32pt}{42pt}
+\titlespacing{\chapter}{0pt}{0pt}{42pt}
 
 % -------------
 % Section title
