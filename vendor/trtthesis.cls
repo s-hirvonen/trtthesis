@@ -44,6 +44,11 @@
 \RequirePackage{csquotes}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{titlesec} % Otsikkotyylit
+\RequirePackage{etoolbox} % Patch commands with \patchcmd
+\RequirePackage[nodayofweek]{datetime}
+\RequirePackage{refcount,lastpage}
+\RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
+        firstinits=true,uniquename=init]{biblatex}
 
 % ---------------------
 % Document measurements
@@ -87,7 +92,6 @@
 % -----------
 % Table of contents
 % -----------
-\renewcommand\contentsname{Sisällys} % Sisällysluettelon nimi
 
 % Chapters that don't have numbering but are wanted to
 % show up in Table of Contents are marked with \nnchapter
@@ -168,39 +172,6 @@
     \vskip 0.1em \@plus\p@
 }
 
-% ----------
-
-\if@twoside
-  \def\ps@headings{%
-      \let\@oddfoot\@empty\let\@evenfoot\@empty
-      \def\@evenhead{\thepage\hfil\slshape\leftmark}%
-      \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
-      \let\@mkboth\markboth
-    \def\chaptermark##1{%
-      \markboth {\MakeUppercase{%
-        \ifnum \c@secnumdepth >\m@ne
-            \@chapapp\ \tutchapter. \ %
-        \fi
-        ##1}}{}}%
-    \def\sectionmark##1{%
-      \markright {\MakeUppercase{%
-        \ifnum \c@secnumdepth >\z@
-          \thesection. \ %
-        \fi
-        ##1}}}}
-\else
-  \def\ps@headings{%
-    \let\@oddfoot\@empty
-    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
-    \let\@mkboth\markboth
-    \def\chaptermark##1{%
-      \markright {\MakeUppercase{%
-        \ifnum \c@secnumdepth >\m@ne
-            \@chapapp\ \tutchapter \ %
-        \fi
-        ##1}}}}
-\fi
-
 % -------------
 % Chapter title
 % -------------
@@ -235,6 +206,14 @@
 \newcommand\chaptertocstr{\thechapter.}
 \newcommand\tutchapter{\thechapter.}
 
+% --------------------------
+% Bibliography and Citations
+% --------------------------
+
+\defbibheading{bibliography}[\bibname]{%
+        \addcontentsline{toc}{chapter}{\bibname}%
+        \chapter*{\MakeUppercase{#1}}%
+        \markboth{#1}{#1}}
 
 % Määritellään puolipiste viitteiden erottimeksi [1; 2] pilkun sijaan [1, 2].
 
@@ -288,7 +267,7 @@
 % Captions are in the form _*{type} {number}.*_ {caption}
 % ------------
 
-\usepackage[labelsep=period]{caption}
+\RequirePackage[labelsep=period]{caption}
 \captionsetup[figure]{labelfont={it,bf},textfont=it}
 \renewcommand{\thetable}    {\arabic{table}}
 \renewcommand{\thesubtable} {\arabic{subtable}}
