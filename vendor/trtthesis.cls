@@ -74,12 +74,12 @@
 % Headers
 % -------
 \pagestyle{fancyplain}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter \ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{}{}}
 
-\lhead{\fancyplain{}{\nouppercase\leftmark}}
-\chead{}
-\rhead{\thepage}
+\fancyhead[RE,LO]{\fancyplain{}{\nouppercase\leftmark}}
+\fancyhead[C]{}
+\fancyhead[LE,RO]{\thepage}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \pagenumbering{gobble} % No page numbering until explicitly defined
