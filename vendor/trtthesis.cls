@@ -269,10 +269,10 @@
 
 \RequirePackage[labelsep=period]{caption}
 \captionsetup[figure]{labelfont={it,bf},textfont=it}
+\renewcommand{\thefigure}   {\arabic{figure}}
 \renewcommand{\thetable}    {\arabic{table}}
 \renewcommand{\thesubtable} {\arabic{subtable}}
 \renewcommand{\thesubfigure}{\arabic{subfigure}}
-
 
 % ------------
 % Images
