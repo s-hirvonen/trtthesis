@@ -42,6 +42,7 @@
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
 \RequirePackage{csquotes}
+\RequirePackage{setspace}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
 \RequirePackage{titlesec} % Otsikkotyylit
 \RequirePackage{etoolbox} % Patch commands with \patchcmd
@@ -54,12 +55,9 @@
 % Document measurements
 % ---------------------
 \RequirePackage[paper=a4paper,inner=4cm,outer=2cm,top=2.5cm,bottom=2.5cm,headsep=1em]{geometry}
-
-% -----------
-% Line height
-% -----------
-\RequirePackage{setspace}
-\setstretch{1.2}
+\setlength\parindent{0cm}   % No paragrapgh indent
+\setlength\brokenpenalty{1000}
+\setstretch{1.2} % Line height
 
 % ----------------------
 % Precontent environment
@@ -77,7 +75,6 @@
   \pagenumbering{arabic}
 }{}
 
-
 % -------
 % Headers
 % -------
@@ -88,17 +85,6 @@
 \lhead{}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt} % Poistaa vaakaviivan
-
-% -----------
-% Table of contents
-% -----------
-
-% Chapters that don't have numbering but are wanted to
-% show up in Table of Contents are marked with \nnchapter
-\newcommand{\nnchapter}[1]{
-    \chapter*{#1}
-    \addcontentsline{toc}{chapter}{\MakeUppercase#1}
-}
 
 % -------------
 % Chapter title
@@ -130,21 +116,15 @@
         {}
 \titlespacing{\subsection}{0pt}{18pt}{12pt}
 
-\newcommand\chaptertocstyle{chapter}
-\newcommand\chaptertocstr{\thechapter.}
-\newcommand\tutchapter{\thechapter.}
-
 % --------------------------
 % Bibliography and Citations
 % --------------------------
-
 \defbibheading{bibliography}[\bibname]{%
         \addcontentsline{toc}{chapter}{\bibname}%
         \chapter*{\MakeUppercase{#1}}%
         \markboth{#1}{#1}}
 
-% Määritellään puolipiste viitteiden erottimeksi [1; 2] pilkun sijaan [1, 2].
-
+% Citation delimiter ; instead of ,
 \def\@citex[#1]#2{%
   \let\@citea\@empty
   \@cite{\@for\@citeb:=#2\do
@@ -157,18 +137,78 @@
          {Citation `\@citeb' on page \thepage \space undefined}}%
        {\csname b@\@citeb\endcsname}}}{#1}}
 
-% TUT specific:
-\setlength\parindent{0cm}   % vaihda 0:ksi tarvittaessa
-\setlength\brokenpenalty{1000}
+% -----------
+% Table of contents
+% -----------
 
-\newlength\chapterspace
-\setlength\chapterspace{0.4cm} % Tila otsikon numeron ja nimen välillä
-\newcommand\chapterheadbefore{26pt}
-\newcommand\chapterheadafter{42pt}
-\newcommand\chapfigname{\thechapter}
+% Chapters that don't have numbering but are wanted to
+% show up in Table of Contents are marked with \nnchapter
+\newcommand{\nnchapter}[1]{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{\MakeUppercase#1}
+}
 
+\renewcommand\@dotsep{0}
+\renewcommand*\l@chapter{\@dottedtocline{1}{0.0em}{1.5em}} 
+\renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{3.2em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{6.5em}{4.1em}}
+\renewcommand*\l@paragraph{\@dottedtocline{4}{9.5em}{5em}}
+\renewcommand*\l@subparagraph{\@dottedtocline{5}{11.5em}{6em}}
 
-% kuukausien nimet
+\renewcommand*\l@chapter[2]{
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.4em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \textbf{\textsf{\uppercase{#1}\nobreak\leaders\hbox{$\m@th
+        	\mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}
+        \hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.4em \@plus\p@
+}
+
+\renewcommand*\l@section[2]{%
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.1em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \hskip 2.5em
+      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.1em \@plus\p@
+}
+
+\renewcommand*\l@subsection[2]{%
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.1em \@plus\p@
+    \setlength\@tempdima{2.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \hskip 5em
+      \textsf{#1 \leaders\hbox{\rule{2pt}{0.5pt}}\hfill \hb@xt@\@pnumwidth{\hss #2}}\par
+      \penalty\@highpenalty
+    \endgroup
+    \vskip 0.1em \@plus\p@
+}
+
+% ------------
+% Date formatting
+% ------------
 \newcommand{\monthyear}{\ifnum\number\day<10 0\fi%
 	\ifcase \month \or Tammikuu\or Helmikuu\or Maaliskuu\or Huhtikuu\or Toukokuu%
 	\or Kesäkuu\or Heinäkuu\or Elokuu\or Syyskuu\or Lokakuu\or Marraskuu\or Joulukuu\fi, %
@@ -179,6 +219,9 @@
   \or June\or July\or August\or September\or October\or November\or December\fi, %
   \number \year}
 
+% ---------------------
+% Terms and Definitions
+% ---------------------
 \newenvironment*{termiluettelo}
 {\begin{list}{}{
 \setlength{\labelwidth}{7em}
@@ -191,10 +234,7 @@
 
 % ------------
 % Caption styles
-%
-% Captions are in the form _*{type} {number}.*_ {caption}
 % ------------
-
 \RequirePackage[labelsep=period]{caption}
 \captionsetup[figure]{labelfont={it,bf},textfont=it}
 \renewcommand{\thefigure}   {\arabic{figure}}
@@ -209,7 +249,6 @@
 % 70% of page width.
 % Usage example: \centeredpicture[1.0]{esimKuva}{Matlabilla tehty PDF-muotoinen esimerkkikuva.}
 % ------------
-
 \newcommand{\centeredpicture}[3][0.7]{
   \begin{figure}[h]
   \begin{center}
