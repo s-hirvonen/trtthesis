@@ -40,7 +40,7 @@
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
-\RequirePackage{parskip}
+\RequirePackage{parskip} % Vertical space instead of indent on new paragraph
 \RequirePackage{csquotes}
 \RequirePackage{setspace}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
@@ -55,7 +55,6 @@
 % Document measurements
 % ---------------------
 \RequirePackage[paper=a4paper,inner=4cm,outer=2cm,top=2.5cm,bottom=2.5cm,headsep=1em]{geometry}
-\setlength\parindent{0cm}   % No paragrapgh indent
 \setlength\brokenpenalty{1000}
 \setstretch{1.2} % Line height
 
