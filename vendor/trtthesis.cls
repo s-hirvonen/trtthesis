@@ -43,7 +43,8 @@
 \RequirePackage{parskip} % Vertical space instead of indent on new paragraph
 \RequirePackage{csquotes}
 \RequirePackage{setspace}
-\RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
+\RequirePackage{emptypage} % Prevents any header content on empty pages
+\RequirePackage{hyphenat}
 \RequirePackage{titlesec} % Otsikkotyylit
 \RequirePackage{etoolbox} % Patch commands with \patchcmd
 \RequirePackage{lipsum}   % Used to generate placeholder content in sample chapters
@@ -62,7 +63,7 @@
 % ----------------------
 % Precontent environment
 % ----------------------
-\newenvironment{precontent}{\pagenumbering{roman}}{}
+\newenvironment{precontent}{\pagenumbering{roman}}{\cleardoublepage}
 
 % -------------------
 % Content environment
