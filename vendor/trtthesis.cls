@@ -19,8 +19,14 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{vendor/trtthesis}
         [2006/10/16 v0.1f Extension to LaTeX report document class]
-
 \LoadClassWithOptions{report}
+
+% ------------
+% Typography
+%
+% Headings : Helvetica
+% ------------
+\RequirePackage{helvet}
 
 % -----------------
 % Required packages
@@ -29,25 +35,15 @@
 \RequirePackage[utf8]{inputenc}% skandinaaviset kirjasimet
 \RequirePackage{graphicx}% grafiikkapaketti
 \RequirePackage{subfigure}% mahdollistaa pikkukuvat..
-\RequirePackage{wrapfig}% pistaa tekstin kiertaan kuvan..
 \RequirePackage{fancyhdr}% tyylikkäämmät sivutukset...
 \RequirePackage{supertabular}% ylisivun mittaiset taulukot..
-\RequirePackage{rotating}% taulukoiden ja kuvien kääntely
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
 \RequirePackage{mdwlist} % Listojen rivinvälin määrittämiseen
 \RequirePackage{parskip}
 \RequirePackage{csquotes}
 \RequirePackage{hyphenat} % Tavutus ja tavutuksen poisto tarvittaessa
-\RequirePackage{mfirstuc}
 \RequirePackage{titlesec} % Otsikkotyylit
-
-% ------------
-% Typography
-%
-% Headings : TEX Gyre Heros
-% ------------
-\RequirePackage{tgheros}
 
 % ---------------------
 % Document measurements
@@ -213,39 +209,32 @@
         {\makebox[2em][l]{\thechapter.}}
         {0pt}
         {\uppercase}
-\titlespacing{\chapter}{0pt}{42pt}{42pt}
+\titlespacing{\chapter}{0pt}{32pt}{42pt}
 
+% -------------
+% Section title
+% -------------
+\titleformat{\section}
+        {\large\sffamily\bfseries}
+        {\makebox[2em][l]{\thesection}}
+        {0pt}
+        {}
+\titlespacing{\section}{0pt}{18pt}{12pt}
+
+% ----------------
+% Subsection title
+% ----------------
+\titleformat{\subsection}
+        {\large\sffamily\bfseries}
+        {\makebox[3em][l]{\thesubsection}}
+        {0pt}
+        {}
+\titlespacing{\subsection}{0pt}{18pt}{12pt}
 
 \newcommand\chaptertocstyle{chapter}
 \newcommand\chaptertocstr{\thechapter.}
 \newcommand\tutchapter{\thechapter.}
-\renewcommand\thechapter {\@arabic\c@chapter}
-\renewcommand\thesection {\thechapter.\@arabic\c@section}
-\renewcommand\thesubsection   {\thesection.\@arabic\c@subsection}
-\renewcommand\thesubsubsection{\thesubsection \.@arabic\c@subsubsection}
-\renewcommand\theparagraph    {\thesubsubsection.\@arabic\c@paragraph}
-\renewcommand\thesubparagraph {\theparagraph.\@arabic\c@subparagraph}
 
-\renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-1.8ex  \@plus -1ex \@minus -.2ex}%
-                                   {2.3ex \@plus.2ex \@minus \parskip}%
-                                   {\noindent \bf\large\textsf}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-1.8ex\@plus -1ex \@minus -.2ex}%
-                                     {2.3ex \@plus .2ex \@minus \parskip}%
-                                     {\noindent \bf\large\textsf}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\noindent \normalfont\normalsize\bfseries}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {3.25ex \@plus1ex \@minus.2ex}%
-                                    {-1em}%
-                                    {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                       {3.25ex \@plus1ex \@minus .2ex}%
-                                       {-1em}%
-                                      {\normalfont\normalsize\bfseries}}
 
 % Määritellään puolipiste viitteiden erottimeksi [1; 2] pilkun sijaan [1, 2].
 
@@ -261,21 +250,6 @@
          {Citation `\@citeb' on page \thepage \space undefined}}%
        {\csname b@\@citeb\endcsname}}}{#1}}
 
-% \renewcommand\appendix{\par
-%   \renewcommand\chaptertocstyle{appendix}
-%   \renewcommand\chaptertocstr{\appendixname {\@arabic \c@chapter}:}
-%   \renewcommand\tutchapter{\textsf{\MakeUppercase{\appendixname}}
-%     {\@arabic \c@chapter}:}
-%   \renewcommand\chapfigname{L{\@arabic\c@chapter}}
-%   \renewcommand\chapterheadbefore{-22pt}
-%   \renewcommand\chapterheadafter{10pt}
-%   \setlength\chapterspace{0.0cm}
-%   \setcounter{chapter}{0}%
-%   \setcounter{section}{0}%
-%   \gdef\@chapapp{\appendixname}%
-% %  \gdef\thechapter{\textsf{\MakeUppercase{\appendixname}}
-% %    {\@arabic \c@chapter}:}%
-% }
 % TUT specific:
 \setlength\parindent{0cm}   % vaihda 0:ksi tarvittaessa
 \setlength\brokenpenalty{1000}
@@ -315,9 +289,8 @@
 % ------------
 
 \usepackage[labelsep=period]{caption}
-\captionsetup[figure]{labelfont={bf,it},textfont=it}
+\captionsetup[figure]{labelfont={it,bf},textfont=it}
 \renewcommand{\thetable}    {\arabic{table}}
-\renewcommand{\thefigure}   {\arabic{figure}}
 \renewcommand{\thesubtable} {\arabic{subtable}}
 \renewcommand{\thesubfigure}{\arabic{subfigure}}
 
