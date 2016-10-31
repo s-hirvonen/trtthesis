@@ -51,7 +51,7 @@
 \RequirePackage[nodayofweek]{datetime}
 \RequirePackage{refcount,lastpage}
 \RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
-        firstinits=true,uniquename=init]{biblatex}
+        giveninits=true,uniquename=init]{biblatex}
 
 % ---------------------
 % Document measurements
@@ -234,11 +234,7 @@
 % Caption styles
 % ------------
 \RequirePackage[labelsep=period]{caption}
-\captionsetup[figure]{labelfont={it,bf},textfont=it}
-\renewcommand{\thefigure}   {\arabic{figure}}
-\renewcommand{\thetable}    {\arabic{table}}
-\renewcommand{\thesubtable} {\arabic{subtable}}
-\renewcommand{\thesubfigure}{\arabic{subfigure}}
+\captionsetup{labelfont={it,bf},textfont=it}
 
 % ------------
 % Images
