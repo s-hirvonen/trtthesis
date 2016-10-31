@@ -50,8 +50,10 @@
 \RequirePackage{lipsum}   % Used to generate placeholder content in sample chapters
 \RequirePackage[nodayofweek]{datetime}
 \RequirePackage{refcount,lastpage}
+\RequirePackage{mfirstuc}
 \RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
         giveninits=true,uniquename=init]{biblatex}
+\RequirePackage{rotating}% taulukoiden ja kuvien kääntely
 
 % ---------------------
 % Document measurements
@@ -77,9 +79,15 @@
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{}{}}
 
-\fancyhead[RE,LO]{\fancyplain{}{\nouppercase\leftmark}}
-\fancyhead[C]{}
-\fancyhead[LE,RO]{\thepage}
+\if@twoside
+    \fancyhead[RE,LO]{\fancyplain{}{\nouppercase\leftmark}}
+    \fancyhead[C]{}
+    \fancyhead[LE,RO]{\thepage}
+\else
+    \fancyhead[L]{\fancyplain{}{\nouppercase\leftmark}}
+    \fancyhead[C]{}
+    \fancyhead[R]{\thepage}
+\fi
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \pagenumbering{gobble} % No page numbering until explicitly defined
