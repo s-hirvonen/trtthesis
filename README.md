@@ -23,3 +23,7 @@ Versio 1.1.0
 ## Viittausjärjestelmä
 
 Pohja käyttää BibLaTeX-kirjallisuusviitejärjestelmää, jonka luomat viittausmerkinnät ja lähdeluettelo on mukautettu vastaamaan tiedekunnan ohjeita.
+
+## Kaksipuoliselle paperille tulostaminen
+
+Sivujen leveän marginaalin saa tulostumaan aina oikein sisäreunaan antamalla ``\documentclass``-komennon yhteydessä ``[twoside]``-argumentin.
