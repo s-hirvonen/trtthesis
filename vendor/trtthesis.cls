@@ -36,6 +36,7 @@
 \RequirePackage{graphicx}% grafiikkapaketti
 \RequirePackage{subfigure}% mahdollistaa pikkukuvat..
 \RequirePackage{fancyhdr}% tyylikkäämmät sivutukset...
+\RequirePackage{hyperref}% linkitykset viitteistä/sisällysluettelosta
 \RequirePackage{supertabular}% ylisivun mittaiset taulukot..
 \RequirePackage{amsmath}% matematiikkakirjasto
 \RequirePackage{setspace}% rivivälin vaihtoon
@@ -52,7 +53,7 @@
 \RequirePackage{refcount,lastpage}
 \RequirePackage{mfirstuc}
 \RequirePackage[backend=biber,style=authoryear,maxbibnames=99,maxcitenames=2,
-        giveninits=true,uniquename=init]{biblatex}
+        giveninits=true,uniquename=init,dashed=false]{biblatex}
 \RequirePackage{rotating}% taulukoiden ja kuvien kääntely
 
 % ---------------------
@@ -61,6 +62,7 @@
 \RequirePackage[paper=a4paper,inner=4cm,outer=2cm,top=2.5cm,bottom=2.5cm,headsep=1em]{geometry}
 \setlength\brokenpenalty{1000}
 \setstretch{1.2} % Line height
+\setlength\headheight{15.0pt} % yläotsakkeen korkeus
 
 % ----------------------
 % Precontent environment
